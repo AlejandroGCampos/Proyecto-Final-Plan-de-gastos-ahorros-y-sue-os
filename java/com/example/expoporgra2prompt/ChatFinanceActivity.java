@@ -43,7 +43,7 @@ public class ChatFinanceActivity extends AppCompatActivity {
 
     private String obtenerApiKey() {
         // API key hardcoded directly as requested
-        return "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";
+        return "api";
     }
 
     private void obtenerRespuestaFinanceBot(String pregunta) {
@@ -134,3 +134,4 @@ public class ChatFinanceActivity extends AppCompatActivity {
         }).start();
     }
 }
+
