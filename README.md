@@ -12,6 +12,7 @@ Link: https://drive.google.com/file/d/14c6OkfgD9CVdprC9ddbF7WvWoAatGr92/view?usp
   - Instrucciones de Instalación:
 
 3. Flujo de n8n (archivo .json)
+[Uploading aviso de sueño.json…]()
 
 
 4. Documentación de Propuesta
