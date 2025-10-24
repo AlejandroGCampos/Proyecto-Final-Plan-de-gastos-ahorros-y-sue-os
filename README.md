@@ -11,7 +11,7 @@ Tema: Plan de gastos, ahorros y sueños.
     En el Documento de Propuesta/Documentación.
 
   - Instrucciones de Instalación:
-1. Clona o Descarga el proyecto: Descarga los archivos correspondientes o bien descarga el .zip (opcional)
+1. Clona o Descarga el proyecto: Descarga los archivos correspondientes o bien descarga el .zip **(opcional)**
 2. Asegúrate de tener instalado lo siguiente: Android Studio, JDK 11 o superior, Android SDK actualizado, Emulador Android configurado o dispositivo físico conectado por USB
   - Luego: Abre Android Studio. Selecciona "Open an existing project" y busca la carpeta de la app/proyecto. Espera a que Gradle sincronice las dependencias (esto puede tardar un poco). Verifica que no haya errores de compilación.
 3. Descargar el flujo de n8n (.json).
