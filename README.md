@@ -1,4 +1,4 @@
-[aviso de sueño.json](https://github.com/user-attachments/files/23113381/aviso.de.sueno.json)# Proyecto Final | FinanceCoach
+# Proyecto Final | FinanceCoach
 Tema: Plan de gastos, ahorros y sueños.
 
 1. Video de la Fase 1
