@@ -1,0 +1,346 @@
+{
+  "name": "Flujo financecoach",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ec3a5c58-58b9-49cb-8442-13e6a4c69362",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        48,
+        240
+      ],
+      "id": "c57b4395-c9a6-4bf1-a863-6632b92c931d",
+      "name": "Webhook",
+      "webhookId": "ec3a5c58-58b9-49cb-8442-13e6a4c69362"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1168kHsnHtzt7GKoXZr5KTi0If2YJ6mg1d3OyQWilZn4",
+          "mode": "list",
+          "cachedResultName": "Interaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1168kHsnHtzt7GKoXZr5KTi0If2YJ6mg1d3OyQWilZn4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1168kHsnHtzt7GKoXZr5KTi0If2YJ6mg1d3OyQWilZn4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Usuario": "={{$json.body.usuario}}",
+            "Tipo": "={{$json.body.tipo}}",
+            "Accion": "={{$json.body.accion}}",
+            "Monto": "={{$json.body.monto}}",
+            "Fecha": "={{$json.body.fecha}}",
+            "Categoria": "={{$json.body.categoria}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Usuario",
+              "displayName": "Usuario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tipo",
+              "displayName": "Tipo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Accion",
+              "displayName": "Accion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Monto",
+              "displayName": "Monto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Categoria",
+              "displayName": "Categoria",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        240,
+        64
+      ],
+      "id": "d66d06da-16bd-4b17-af83-386dac50327d",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "1myuan8X7pNZoD0H",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Por favor, inicia el proceso de análisis de datos para generar el reporte de ahorros.",
+        "options": {
+          "systemMessage": "Eres un asistente motivacional y financiero personal que ayuda al usuario a mantener constancia en sus ahorros, gastos y metas (llamadas \"sueños\"). \nRecibirás datos de las últimas 3 interacciones del usuario en su aplicación, guardadas en un Google Sheet.\n\nCada interacción incluye información como:\n- Usuario\n- Tipo: \"ahorro\", \"gasto\" o \"sueño\".\n- Acción\n- Monto: cantidad ingresada.\n- Categoria.\n- Fecha.\n\nTu tarea es:\n1. **Analizar y resumir las últimas 3 interacciones** del usuario, destacando patrones o comportamientos (por ejemplo: “Has estado ahorrando constantemente”, o “Últimamente has gastado más de lo que has ahorrado”).\n2. **Motivar al usuario** con un mensaje breve, positivo y realista según sus datos. Ejemplo: \n   - Si ha ahorrado más: “¡Excelente trabajo! Tu disciplina te está acercando a tus sueños.”  \n   - Si ha gastado más: “No pasa nada, cada día es una nueva oportunidad para equilibrar tus finanzas.”  \n   - Si agregó un sueño: “¡Qué genial! Cada pequeño paso que das te acerca más a cumplirlo.”\n3. Finaliza el mensaje **invitando al usuario a registrar una nueva acción** (por ejemplo: “¿Qué te gustaría hacer hoy? ¿Ahorrar, registrar un gasto o avanzar en un sueño?”).\n\nDevuelve la respuesta en un formato claro y cálido, como si fuera un mensaje personal de recordatorio.\n\nFormato de salida:\n---\n🧾 **Resumen de tus últimas acciones:**  \n[Resumen breve de las 3 interacciones]\n\n💬 **Mensaje motivacional:**  \n[Frase motivacional personalizada]\n\n👉 **Sugerencia:**  \n[Invitación a seguir registrando una acción]\n---\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        272,
+        384
+      ],
+      "id": "f23d63bd-cf0f-430a-a1a4-7fc7ee943601",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        560
+      ],
+      "id": "82c75539-3a3f-4d5c-893f-cadcbf9be7d9",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "XHg9BD4zfms4IMPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1168kHsnHtzt7GKoXZr5KTi0If2YJ6mg1d3OyQWilZn4",
+          "mode": "list",
+          "cachedResultName": "Interaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1168kHsnHtzt7GKoXZr5KTi0If2YJ6mg1d3OyQWilZn4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1168kHsnHtzt7GKoXZr5KTi0If2YJ6mg1d3OyQWilZn4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        448,
+        576
+      ],
+      "id": "ad139442-a82b-4a57-be6d-75cfaed47bbc",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "1myuan8X7pNZoD0H",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        64,
+        400
+      ],
+      "id": "3a3a169a-958f-44a1-a6f7-86e455b1d270",
+      "name": "Schedule Trigger",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "sendTo": "deividguerra296@gmail.com",
+        "subject": "FinanceCoach",
+        "emailType": "text",
+        "message": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        624,
+        384
+      ],
+      "id": "6626451e-07c0-4367-8755-d98b4b0fa70c",
+      "name": "Send a message5",
+      "webhookId": "50a9c0c6-c550-417c-994a-f1688e671715",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "sM2c1VYnDmSYIk6v",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "deividguerra296@gmail.com",
+        "subject": "FinanceCoach",
+        "emailType": "text",
+        "message": "=Usuario: {{$json.body.usuario}} \nTipo: {{$json.body.tipo}} \nAcción: {{$json.body.accion}} \nMonto: {{$json.body.monto}} \nFecha: {{$json.body.fecha}} \nCategoría: {{$json.body.categoria}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        224
+      ],
+      "id": "87893413-6de8-4aa7-88d7-4d11a4261604",
+      "name": "Send a message",
+      "webhookId": "50a9c0c6-c550-417c-994a-f1688e671715",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "sM2c1VYnDmSYIk6v",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a message5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c17b438c-0c82-45fd-87c7-fc70a5f30c83",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1e4aaeb1236e2c10a18b6fc467ceefb952a89ca62cee9b6e85ef2b266b5bbb06"
+  },
+  "id": "yebTVtOepujjiJOy",
+  "tags": []
+}
