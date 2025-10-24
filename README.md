@@ -1,5 +1,5 @@
 # Proyecto Final | FinanceCoach
-Tema: Plan de gastos, ahorros y sueños.
+*Tema: Plan de gastos, ahorros y sueños.*
 
 **Video de la Fase 1**
   - Link: https://drive.google.com/file/d/14c6OkfgD9CVdprC9ddbF7WvWoAatGr92/view?usp=sharing
